@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html xmlns="http://wwww.w3.org/1999/xhtml"
+	xmlns:th="https://www.thymeleaf.org"
+	xmlns:sec="http://wwww.thymeleaf.org/extras/spring-security">
+
+<head>
+<meta charset="UTF-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Chat Room</title>
+<link rel="stylesheet" th:href="@{css/chat.css}">
+</head>
+
+<body>
+	<div class="chat-container">
+		<div class="chat-sidebar">
+			<div class="user-info">
+				<img id="profilephoto" th:src="${photourl}" alt="User Avatar">
+				<div class="user-dropdown">
+					<span id="username" class="username"
+						sec:authentication="principal.username"></span>
+					<div class="dropdown-content" id="dropdown-content">
+						<!--                <a href="#">Profile</a>   -->
+						<form th:action="@{/signout}" method="post">
+							<button type="submit">Logout</button>
+						</form>
+					</div>
+				</div>
+
+			</div>
+<!--  
+			<div class="user-options">
+				<button id="logout-button" style="display: none;">Logout</button>
+			</div>
+-->
+			<div class="channels">
+				<div class="channel">#general</div>
+				<div class="channel">#random</div>
+				<div class="channel">#development</div>
+			</div>
+		</div>
+		<div id="chatpage" class="chat-content hidden">
+			<div class="messages">
+				<div class="message">
+					<img th:src="@{image/admin.jpg}" alt="User Avatar">
+					<div class="message-info">
+						<span class="username">Admin</span> <span class="timestamp"></span>
+					</div>
+					<div id="message-tex" class="message-text"> Welcome </div>
+				</div>
+			</div>
+			<form id="messageForm" name="messageForm">
+				<div class="chat-input" id="message-send">
+					<input id="coremessage" type="text" placeholder="Message #general">
+					<button type="submit">Send</button>
+				</div>
+			</form>
+		</div>
+	</div>
+	<script
+		src="https://cdnjs.cloudflare.com/ajax/libs/sockjs-client/1.1.4/sockjs.min.js"></script>
+	<script
+		src="https://cdnjs.cloudflare.com/ajax/libs/stomp.js/2.3.3/stomp.min.js"></script>
+	<script th:src="@{js/chat1.js}"></script>
+	<script th:src="@{ja/scrpt.js}"></script>
+</body>
+
+</html>
