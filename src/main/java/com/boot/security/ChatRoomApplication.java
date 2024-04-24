@@ -21,7 +21,7 @@ public class ChatRoomApplication implements CommandLineRunner{
 
 	@Override
 	public void run(String...strings) throws Exception {
-		logger.info("All users -> {}", repository.findAll());
+//		logger.info("All users -> {}", repository.findAll());
 		logger.info("User found -> {}", repository.findByUsername("admin"));
 	}
 }

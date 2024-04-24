@@ -18,8 +18,8 @@ import lombok.ToString;
 
 @Data
 @Builder
-@AllArgsConstructor
-@NoArgsConstructor
+//@AllArgsConstructor
+//@NoArgsConstructor
 public class User implements UserDetails {
 
 	private long id;
